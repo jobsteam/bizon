@@ -1,0 +1,98 @@
+{% load static pipeline mptt_tags %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{% endblock %}" />
+    <link rel="icon" href="{% static 'frontend/images/favicon.ico' %}" type="image/x-icon">
+
+
+    {% block styles %}
+        {% stylesheet 'styles' %}
+    {% endblock %}
+</head>
+
+<body class="{% spaceless %}{% block bodyclass %}{% endblock %}{% endspaceless %}">
+
+
+{% block head %}
+    <div class="head">
+        <a class="logo" href="/">
+            <img src="{% static 'frontend/images/footer-logo.png' %}">
+        </a>
+        <div class="menu">
+            <ul>
+                {% for root_category in root_categories %}
+                    <li><a href="{{ root_category.get_absolute_url }}">{{ root_category }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <a href="#" class="search"></a>
+        <a href="#" class="sand"></a>
+        <div class="marquee clear-block">
+            {% for article_marquee in article_marquee_list %}
+                <a href="{{ article_marquee.get_absolute_url }}">{{ article_marquee.title }}</a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+
+<div class="{% block wrapper_class %}wrapper{% endblock %}">
+    {% block content %}
+    {% endblock %}
+</div>
+
+
+{% block footer %}
+    <div class="footer">
+        <div class="footer-content">
+            <div class="column-container clear-block">
+                {% for root_category in root_categories %}
+                    <ul class="column">
+                        <li>
+                            <a href="{{ root_category.get_absolute_url }}">{{ root_category }}</a>
+                            <ul>
+                                {% for descendant_category in root_category.get_descendants %}
+                                    <li><a href="{{ descendant_category.get_absolute_url }}">{{ descendant_category.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                {% endfor %}
+            </div>
+            <div class="footer-text">
+                        
+    Выступая вчера в ДК «Россия» перед депутатами и горожанами, мэр Серпухова Дмитрий Жариков впервые публично обозначил свое отношение к полигону твердых бытовых отходов «Лесная».Выступая вчера в ДК «Россия» перед депутатами и горожанами, мэр Серпухова Дмитрий Жариков впервые публично обозначил свое отношение к полигону твердых бытовых отходов «Лесная».
+                        
+            </div>
+
+            <a class="footer-logo" href="/">
+                <img width="200" src="{% static 'frontend/images/footer-logo.png' %}">
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {% javascript 'libs' %}
+    {% javascript 'settings' %}
+{% endblock %}
+
+<div class="popup-bg search-form">
+    <div class="search-box">
+        <div class="search-head">Поиск по сайту</div>
+        <form action="{% url 'articles:search' %}" method="GET">
+            <input class="search-text" type="text" value="" name="q" />
+            <input class="search-submit" type="submit" value="найти">
+        </form>
+    </div>
+    <a href="#" class="close-popup"></a>
+</div>
+
+</body>
+</html>

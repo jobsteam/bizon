@@ -1,0 +1,36 @@
+{% extends '1_cols.html' %}
+
+{% load sorl_thumbnail %}
+
+{% block content %}
+    <div class="inner-main clear-block">
+        <div class="category-title">
+            <h1>{{ category }}</h1>
+        </div>
+        <div class="categorys">
+            <ul>
+                {% for subcategory in category.get_descendants %}
+                    <li><a href="{{ subcategory.get_absolute_url }}">{{ subcategory }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% for article in article_list %}
+            <div class="inner-element auto-height" style="height: 355px;">
+                <div class="new-foto">
+                    {% thumbnail article.cover "500" crop="center" as im %}
+                        <img src="{{ im.url }}" width="100%">
+                    {% endthumbnail %}
+                    <div class="pix"></div>
+                    <div class="new-title" href="{{ article.get_absolute_url }}">
+                        {{ article.title }}
+                    </div>
+                    <a class="new-link" href="{{ article.get_absolute_url }}"></a>
+                </div>
+                <div class="new-info">
+                    <a href="#" class="place">{{ article.category }}</a>
+                    <div class="new-info-text">{{ article.intro }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

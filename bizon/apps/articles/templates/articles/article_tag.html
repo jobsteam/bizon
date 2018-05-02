@@ -1,0 +1,65 @@
+{% extends '2_cols.html' %}
+
+{% load sorl_thumbnail %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block description %}{{ article.intro }}{% endblock %}
+
+{% block left %}
+    <div class="list">
+        <h1>Новости с пометкой: {{ tag.name }}</h1>
+
+        {% for article in article_list %}
+            <div class="list-element clear-block">
+                <div class="list-element-foto">
+                    
+                {% thumbnail article.cover "830" crop="center" upscale=False as im %}
+                    <img src="{{ im.url }}" width="100%">
+                {% endthumbnail %}
+
+                </div>
+                <div class="list-element-info">
+                    <a class="list-element-title" href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+                    <div class="list-element-category">
+                        <a href="{{ article.category.get_absolute_url }}">{{ article.category.title }}</a>
+                    </div>
+                    <div class="list-element-lid">{{ article.intro }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+{% block right %}
+    <div class="top-block block">
+        <h3>Топ новостей</h3>
+        {% for article_top in article_top_list %}
+            <div class="top-new">
+                <span>{{ article_top.created }}</span> 
+                <a href="{{ article_top.get_absolute_url }}">
+                    {{ article_top.title }}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="recomendation-block block clear-block">
+        <h3>Самое свежее</h3>
+        {% for article_last in article_last_list %}
+            <div class="element-colomn  auto-height">
+                <div class="new-colomn">
+                    <div class="new-foto">
+                        {% thumbnail article_last.cover "560" crop="center" as im %}
+                            <img src="{{ im.url }}" width="100%">
+                        {% endthumbnail %}
+                        <div class="pix"></div>
+                        <div class="new-title">{{ article_last.title }}</div>
+                        <a class="new-link" href="{{ article_last.get_absolute_url }}"></a>
+                    </div>
+                    <div class="new-info">{{ article_last.intro }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends '1_cols.html' %}
+
+{% load sorl_thumbnail %}
+
+{% block content %}
+    <div class="main clear-block">
+        {% for article in article_list %}
+            <div class="element  auto-height">
+                <div class="new-foto">
+                    {% thumbnail article.cover "600" crop="center" as im %}
+                            <img src="{{ im.url }}" width="100%">
+                    {% endthumbnail %}
+                    <div class="pix"></div>
+                    <div class="new-title">{{ article.title }}</div>
+                    <a class="new-link" href="{{ article.get_absolute_url }}"></a>
+                </div>
+                <div class="new-info">
+                    <a href="{{ article.category.get_absolute_url }}" class="place">{{ article.category.title }}</a>
+                    <div class="new-info-text">{{ article.intro }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if is_paginated %}
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+        {% else %}
+          <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+        {% for i in paginator.page_range %}
+          {% if page_obj.number == i %}
+            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+          {% else %}
+            <li><a href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+          <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+        {% else %}
+          <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+      </ul>
+    {% endif %}
+{% endblock content %}
