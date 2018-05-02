@@ -270,7 +270,7 @@ class DjangoFabric(BaseFabric):
         self.fab_link_local_settings()
         self.fab_remote_manage('migrate')
         if self.use_bower:
-            self.fab_remote_manage('bower install')
+            self.fab_remote_manage('yarn install')
         self.fab_remote_manage('collectstatic --noinput')
         sudo('touch {0}/reload.me'.format(self.get_remote_venv_path()))
 
