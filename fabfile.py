@@ -1,4 +1,4 @@
-from key_market.apps.fabric_utils.fabric_class import (
+from bizon.apps.fabric_utils.fabric_class import (
     add_class_methods_as_functions,
     DjangoFabric
 )
