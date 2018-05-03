@@ -5,7 +5,7 @@ from bizon.apps.fabric_utils.fabric_class import (
 
 
 class Fabric(DjangoFabric):
-    host = '89.223.31.37'
+    host = 'bizon.news'
     app_name = 'bizon'
     repository = 'git@github.com:jobsteam/bizon.git'
     remote_db_name = 'bizon'

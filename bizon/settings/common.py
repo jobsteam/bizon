@@ -19,7 +19,7 @@ sys.path.insert(1, path('.'))
 ROOT_URLCONF = 'bizon.urls'
 WSGI_APPLICATION = 'bizon.wsgi.application'
 
-ALLOWED_HOSTS = ['89.223.31.37']
+ALLOWED_HOSTS = ['bizon.news']
 
 
 INSTALLED_APPS = [
