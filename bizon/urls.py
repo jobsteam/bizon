@@ -17,6 +17,7 @@ urlpatterns = [
         template_name='robots.txt', content_type='text/plain')),
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('rss/', include('rss.urls')),
     path('', include('articles.urls')),
 ]
 

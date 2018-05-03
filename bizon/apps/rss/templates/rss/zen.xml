@@ -1,0 +1,37 @@
+{% load i18n common_tags %}<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:media="http://search.yahoo.com/mrss/"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:georss="http://www.georss.org/georss">
+    <channel>
+        <title>BIZON.NEWS</title>
+        <link>{% current_host %}</link>
+        <description>Самые свежие новости, события. Только горячие темы.</description>
+        <language>ru</language>
+        {% for article in article_list %}
+            <item>
+                <title>{{ article.title }}</title>
+                <link>{% current_host %}{{ article.get_absolute_url }}</link>
+                <pdalink>{% current_host %}{{ article.get_absolute_url }}</pdalink>
+                <pubDate>{% language 'en' %}{{ article.created|date:'D, d M Y H:i:s O' }}{% endlanguage %}</pubDate>
+                <author>{{ article.authors.first }}</author>
+                <description>
+                    <![CDATA[
+                    {{ article.intro }}
+                    ]]>
+                </description>
+                <content:encoded>
+                    <![CDATA[
+                    {{ article.text|striptags }}
+                    ]]>
+                </content:encoded>
+                <enclosure url="{% current_host %}{{ article.cover.url }}" type="image/jpeg"/>
+                {% for image in article.text_images %}
+                <enclosure url="{% current_host %}{{ image }}" type="image/jpeg"/>
+                {% endfor %}
+            </item>
+        {% endfor %}
+    </channel>
+</rss>

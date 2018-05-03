@@ -2,9 +2,7 @@
 
 {% load sorl_thumbnail %}
 
-{% block title %}{{ article.title }}{% endblock %}
-
-{% block description %}{{ article.intro }}{% endblock %}
+{% block title %}Новости с пометкой: {{ tag.name }}{% endblock %}
 
 {% block left %}
     <div class="list">

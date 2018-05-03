@@ -1,3 +1,5 @@
+import re
+
 from django.conf import settings
 from django.db import models
 from django.db.models.signals import post_save
@@ -121,6 +123,11 @@ class Article(PolymorphicModel):
             'pk': self.pk,
             'category_url': '%s-%s' % (self.category.slug, self.category.pk),
         })
+
+    @property
+    def text_images(self):
+        pattern = r'img.*src\=[\"\'](\S*)[\"\']'
+        return re.findall(pattern, self.text)
 
 
 class News(Article):

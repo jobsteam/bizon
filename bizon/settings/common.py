@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'libs',
     'articles',
+    'rss',
 ]
 
 MIDDLEWARE = [

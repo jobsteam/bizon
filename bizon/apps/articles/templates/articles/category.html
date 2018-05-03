@@ -2,6 +2,10 @@
 
 {% load sorl_thumbnail %}
 
+{% block title %}{{ category }}. {{ block.super }}{% endblock %}
+
+{% block description %}{% endblock %}
+
 {% block content %}
     <div class="inner-main clear-block">
         <div class="category-title">
