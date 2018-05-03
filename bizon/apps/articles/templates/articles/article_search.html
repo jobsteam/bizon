@@ -13,7 +13,11 @@
         {% for article in article_list %}
             <div class="list-element clear-block">
                 <div class="list-element-foto">
-                    <img width="100%" src="images/new-big8.jpg">
+
+                {% thumbnail article.cover "830" crop="center" upscale=False as im %}
+                    <img src="{{ im.url }}" width="100%">
+                {% endthumbnail %}
+
                 </div>
                 <div class="list-element-info">
                     <a class="list-element-title" href="{{ article.get_absolute_url }}">{{ article.title }}</a>
