@@ -44,7 +44,7 @@ body{
 .wrapper{
     width: 1250px;
     margin: 0 auto;
-    padding: 120px 0 0 0;
+    padding: 120px 0 25px 0;
 }
 
 
@@ -60,6 +60,7 @@ body{
     box-sizing: border-box;
     margin: 15px;
     background: #FFF;
+    box-shadow: 2px 2px 2px #cecece;
 }
 .element .new-title{
     position: absolute;
@@ -169,6 +170,10 @@ body{
 .article-text{
     font: normal 14px/23px Roboto;
     padding: 0 70px;
+}
+.article-text img{
+    width: 100%!important;
+    height: auto!important;
 }
 .lid{
     font: normal 14px/23px Roboto;
@@ -661,6 +666,7 @@ body{
     box-sizing: border-box;
     margin: 15px;
     background: #FFF;
+    box-shadow: 2px 2px 2px #cecece;
 }
 .inner-element .new-title{
     position: absolute;
@@ -720,7 +726,7 @@ body{
     margin: 0 0 5px 0;
 }
 .categorys{
-    margin: 0 15px 25px 15px;
+    margin: 0 15px 15px 15px;
 }
 .categorys ul li a{
     display: block;
