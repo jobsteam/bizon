@@ -56,14 +56,14 @@ body{
 /*Новость по умолчанию*/
 .element{
     float: left;
-    width: calc( 25% - 30px );
+    width: calc( 33.3% - 30px );
     box-sizing: border-box;
     margin: 15px;
     background: #FFF;
 }
 .element .new-title{
     position: absolute;
-    font: normal 15px/18px Roboto;
+    font: bold 18px/21px Roboto;
     color: #FFF;
     bottom: 15px;
     left: 15px;
@@ -113,18 +113,23 @@ body{
 
 
 
-/*Новость N1 на главной*/
-.element:nth-child(1){
-    width: calc( 50% - 30px );
-}
-.element:nth-child(1) .new-info{
-    display: none;
-}
-.element:nth-child(1) .new-title{
-    font: bold 28px Roboto;
-    bottom: 25px;
-    left: 25px;
-    right: 25px;
+/*Новость N1,2 на главной*/
+@media screen and (min-width: 1270px){
+    .element:nth-child(1),
+    .element:nth-child(2){
+        width: calc( 50% - 30px );
+    }
+    .element:nth-child(1) .new-info,
+    .element:nth-child(2) .new-info{
+        display: none;
+    }
+    .element:nth-child(1) .new-title,
+    .element:nth-child(2) .new-title{
+        font: bold 28px Roboto;
+        bottom: 25px;
+        left: 25px;
+        right: 25px;
+    }
 }
 /*Новость N12,13 на главной*/
 .element:nth-child(12),

@@ -36,6 +36,7 @@
         left: 25px;
         right: 25px;
     }
+
 }
 @media screen and (min-width: 700px) and (max-width: 900px){
     .wrapper{
@@ -63,6 +64,7 @@
         right: 15px;
         text-shadow: 2px 2px 2px #333;
     }
+    /*Новость N1,2 на главной*/
     /*Новость N1,2 на главной*/
     .element:nth-child(1),
     .element:nth-child(2){
