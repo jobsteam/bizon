@@ -737,44 +737,6 @@ body{
     text-decoration: none;
     border-radius: 10px
 }
-.pager{
-    margin: 0 15px 25px 15px;
-}
-.left .pager{
-    margin: 0 0 25px 0;
-}
-.pager ul{
-    margin: 0;
-    padding: 0;
-}
-.pager ul li{
-    display: inline-block;
-    margin:  0 0 5px 0;
-}
-.pager ul li a{
-    display: block;
-    background: #333;
-    padding: 7px 15px;
-    font: bold 15px Roboto;
-    color: #FFF;
-    text-decoration: none;
-}
-.pager ul li span{
-    display: block;
-    padding: 7px 15px;
-    font: bold 15px Roboto;
-    color: #333;
-    text-decoration: none;
-}
-.pager ul li span.active-page{
-    display: block;
-    background: #8c8068;
-    padding: 7px 15px;
-    font: bold 15px Roboto;
-    color: #FFF;
-    text-decoration: none;
-
-}
 
 
 
@@ -932,4 +894,81 @@ body{
     background: #FFF;
     font: normal 16px/23px Roboto;
     padding: 25px;
+}
+
+
+/*Пейджер*/
+.pager {
+position: relative;
+overflow:hidden;
+}
+.pager ul {
+list-style:none;
+margin:0;
+padding:0;
+position: relative;
+left:50%;
+float:left;
+font:14px Arial, Helvetica, sans-serif;
+height:40px
+}
+.pager ul li {
+position:relative;
+left:-50%;
+float:left;
+margin:  0 3px 6px 3px;
+}
+.pager ul li a {
+    display: block;
+    background: #333;
+    padding: 7px 15px;
+    font: bold 15px Roboto;
+    color: #FFF;
+    text-decoration: none;
+}
+.pager ul li a:hover {
+background-color:#666; 
+}
+
+
+
+
+
+
+.pager{
+    margin: 0 15px 25px 15px;
+}
+.left .pager{
+    margin: 0 0 25px 0;
+}
+.pager ul{
+    margin: 0;
+    padding: 0;
+}
+.pager ul li{
+    display: inline-block;
+}
+.pager ul li a{
+    display: block;
+    background: #333;
+    padding: 7px 15px;
+    font: bold 15px Roboto;
+    color: #FFF;
+    text-decoration: none;
+}
+.pager ul li span{
+    display: block;
+    padding: 7px 15px;
+    font: bold 15px Roboto;
+    color: #333;
+    text-decoration: none;
+}
+.pager ul li span.active-page{
+    display: block;
+    background: #8c8068;
+    padding: 7px 15px;
+    font: bold 15px Roboto;
+    color: #FFF;
+    text-decoration: none;
+
 }
