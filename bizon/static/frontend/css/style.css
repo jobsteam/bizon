@@ -825,9 +825,10 @@ body{
 .list-element-foto{
     float: left;
     width: 350px;
+    overflow: hidden;
 }
 .list-element-foto img{
-    width: 100%;
+    width: 110%;
     display: block;
 }
 .list-element-info{
