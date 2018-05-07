@@ -105,10 +105,6 @@
             <div class="element-colomn  auto-height">
                 <div class="new-colomn">
                     <div class="new-foto">
-                        {% thumbnail article_last.cover "560" crop="center" as im %}
-                            <img src="{{ im.url }}" width="100%">
-                        {% endthumbnail %}
-                        <div class="pix"></div>
                         <div class="new-title">{{ article_last.title }}</div>
                         <a class="new-link" href="{{ article_last.get_absolute_url }}"></a>
                     </div>

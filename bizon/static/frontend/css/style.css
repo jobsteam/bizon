@@ -169,7 +169,8 @@ body{
 }
 .article-text{
     font: normal 14px/23px Roboto;
-    padding: 0 70px;
+    padding: 0 70px 25px 70px;
+    border-bottom: solid 1px #ccc;
 }
 .article-text img{
     width: 100%!important;
@@ -300,6 +301,21 @@ body{
 .citata-autor{
     font: bold italic 14px/23px Roboto;
 }
+.videoframe{
+    position:relative;
+    padding-bottom:56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+}
+ 
+.videoframe iframe,.videoframe object, .videoframe embed{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
 
 
 /*Блок ТОП*/
@@ -320,6 +336,7 @@ body{
     text-decoration: none;
 }
 .top-new span{
+    display: block;
     font: normal 12px Roboto;
     color: #f00;
 }
@@ -337,27 +354,27 @@ body{
     margin: 0 0 25px 0;
 }
 .new-colomn{
-    background: #333;
+    background: #FFF;
 }
 .element-colomn .new-title{
-    position: absolute;
-    font: normal 15px/21px Roboto;
-    color: #FFF;
+    font: bold 15px/21px Roboto;
+    color: #333;
     bottom: 15px;
     left: 15px;
     right: 45px;
-    text-shadow: 2px 2px 2px #333;
+    padding: 20px 20px 0 20px;
+    text-decoration: underline;
 }
 .element-colomn .new-info{
     font: normal 12px/19px Roboto;
-    color: #CCC;
+    color: #333;
 }
 
 
 
 
 .block{
-    margin: 0 0 45px 0; 
+    margin: 0 0 25px 0; 
 }
 
 
@@ -973,3 +990,6 @@ background-color:#666;
     text-decoration: none;
 
 }
+
+
+
