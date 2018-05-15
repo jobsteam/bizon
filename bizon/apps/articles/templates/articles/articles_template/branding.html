@@ -1,19 +1,53 @@
 {% extends '1_cols.html' %}
 
+{% load common_tags %}
+{% load sorl_thumbnail %}
+
 {% block title %}{{ article.title }}{% endblock %}
 
 {% block description %}{{ article.intro }}{% endblock %}
 
+{% block meta_sicial %}
+    <meta property="og:title" content="{{ article.title }}" />
+    <meta property="og:description" content="{{ article.intro }}" />
+    <meta property="og:image" content="{% current_host %}{{ article.cover.url }}" />
+    <meta property="og:url" content="{% current_host %}{{ article.get_absolute_url }}" />
+    <meta property="og:site_name" content="Bizon.News" />
+{% endblock %}
+
 {% block wrapper_class %}full-wrapper{% endblock %}
+{% block wrapper_style %} style="background:url({{ article.background.url }}) top center no-repeat fixed"{% endblock %}
+
+
 
 
 {% block content %}
     <div class="full-article">
         <div class="full-article-head">
-            <h1>В Серпухов едет с концертом весельчак и балагур Олег Майами</h1>
+            <h1>{{ article.title }}</h1>
         </div>
         <div class="full-article-body">
-            ПРИКОЛЬНЕНЬКО
+            <div class="article-head clear-block">
+                <div class="article-date">{{ article.created }}</div>
+                <div class="article-views">{{ article.views }}</div>
+            </div>
+            <div class="social">
+                <!-- uSocial -->
+                <script async src="https://usocial.pro/usocial/usocial.js?v=6.1.4" data-script="usocial" charset="utf-8"></script>
+                <div class="uSocial-Share" data-pid="d92141cf546ca9b15571a4bd6dd8b8ae" data-type="share" data-options="round-rect,style1,default,absolute,horizontal,size32,eachCounter1,counter0" data-social="vk,ok,fb,twi,telegram" data-mobile="vi,wa,sms"></div>
+                <!-- /uSocial -->
+            </div>
+            {% thumbnail article.cover "700" crop="center" upscale=False as im %}
+                <img src="{{ im.url }}" width="100%">
+            {% endthumbnail %}
+            {{ article.text|safe }}
+            <div class="tags clear-block">
+                <ul>
+                {% for tag in article.tags.all %}
+                    <li><a href="{% url 'articles:tag' tag.slug %}">#{{ tag.name }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
 {% endblock %}
