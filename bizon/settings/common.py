@@ -149,7 +149,7 @@ PIPELINE = {
             'source_filenames': (
                 'node_modules/jquery/dist/jquery.min.js',
                 'node_modules/jquery-match-height/dist/jquery.matchHeight-min.js',  # NOQA
-                'node_modules/jquery.marquee/jquery.marquee.min.js',
+                'libs/js/jquery.simplemarquee/jquery.simplemarquee.js',
             ),
             'output_filename': 'frontend/js/libs.js',
         },

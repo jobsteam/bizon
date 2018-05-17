@@ -32,9 +32,9 @@
         </div>
         <a href="#" class="search"></a>
         <a href="#" class="sand"></a>
-        <div class="marquee clear-block">
+        <div class="marquee">
             {% for article_marquee in article_marquee_list %}
-                <a href="{{ article_marquee.get_absolute_url }}">{{ article_marquee.title }}</a>
+                |<a href="{{ article_marquee.get_absolute_url }}">{{ article_marquee.title }}</a>
             {% endfor %}
         </div>
     </div>
