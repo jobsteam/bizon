@@ -113,6 +113,7 @@ MEDIA_ROOT = path('../media')
 YARN_MODULES_ROOT = path('static')
 
 YARN_INSTALLED_APPS = (
+    '@fancyapps/fancybox@3.3',
     'include-media-export@1.0',
     'include-media@1.4',
     'jquery-match-height@0.7',
@@ -138,6 +139,7 @@ PIPELINE = {
     'STYLESHEETS': {
         'styles': {
             'source_filenames': (
+                'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css',  # NOQA
                 'frontend/css/style.css',
                 'frontend/css/responsive.css',
             ),
@@ -149,6 +151,7 @@ PIPELINE = {
             'source_filenames': (
                 'node_modules/jquery/dist/jquery.min.js',
                 'node_modules/jquery-match-height/dist/jquery.matchHeight-min.js',  # NOQA
+                'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js',
                 'libs/js/jquery.simplemarquee/jquery.simplemarquee.js',
             ),
             'output_filename': 'frontend/js/libs.js',

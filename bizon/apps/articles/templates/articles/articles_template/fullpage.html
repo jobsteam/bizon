@@ -1,0 +1,74 @@
+{% extends '1_cols.html' %}
+
+{% load common_tags %}
+{% load sorl_thumbnail %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block description %}{{ article.intro }}{% endblock %}
+
+{% block meta_sicial %}
+    <meta property="og:title" content="{{ article.title }}" />
+    <meta property="og:description" content="{{ article.intro }}" />
+    <meta property="og:image" content="{% current_host %}{{ article.cover.url }}" />
+    <meta property="og:url" content="{% current_host %}{{ article.get_absolute_url }}" />
+    <meta property="og:site_name" content="Bizon.News" />
+{% endblock %}
+
+{% block wrapper_class %}full-wrapper{% endblock %}
+
+
+
+{% block content %}
+    <div class="fuul-page">
+        <h1>{{ article.title }}</h1>
+
+            <div class="full-page-head clear-block">
+                <div class="full-page-category">
+                    <a href="{{ article.category.get_absolute_url }}">
+                        {{ article.category }}
+                    </a>
+                </div>
+                <div class="full-page-date">{{ article.created }}</div>
+                <div class="full-page-views">{{ article.views }}</div>
+            </div>
+
+
+
+
+        <div class="full-page-text">{{ article.intro }}</div>
+        {% thumbnail article.cover "900" crop="center" upscale=False as im %}
+            <img src="{{ im.url }}" width="100%">
+        {% endthumbnail %}
+        <div class="full-page-text">
+            <div>{{ article.text|safe }}</div>
+            {% for picture in article.gallery.all %}
+                <h2>{{ picture.title }}</h2>
+                <div class="full-page-image">
+                {% thumbnail picture.pic "700" crop="center" upscale=False as im %}
+                    <a data-fancybox="gallery" href="{{ picture.pic.url }}"><img src="{{ im.url }}" width="100%"></a>
+                {% endthumbnail %}
+                    <div class="full-page-image-title">
+                        Автор фото: {{ picture.author }}
+                    </div>
+                </div>
+                <div class="picture-description">{{ picture.description }}</div>
+            {% endfor %}
+            <div class="tags clear-block">
+                <ul>
+                {% for tag in article.tags.all %}
+                    <li><a href="{% url 'articles:tag' tag.slug %}">#{{ tag.name }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div class="social">
+                <!-- uSocial -->
+                <script async src="https://usocial.pro/usocial/usocial.js?v=6.1.4" data-script="usocial" charset="utf-8"></script>
+                <div class="uSocial-Share" data-pid="d92141cf546ca9b15571a4bd6dd8b8ae" data-type="share" data-options="round-rect,style1,default,absolute,horizontal,size32,eachCounter1,counter0" data-social="vk,ok,fb,twi,telegram" data-mobile="vi,wa,sms"></div>
+                <!-- /uSocial -->
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

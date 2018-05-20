@@ -226,6 +226,36 @@ class Category(MPTTModel):
                                                     'pk': self.pk})
 
 
+class Photo(models.Model):
+    """
+    Модель для галереи новостей.
+    """
+    article = models.ForeignKey(
+        'articles.Article',
+        on_delete=models.CASCADE,
+        verbose_name='статья',
+        related_name='gallery')
+    title = models.CharField(
+        'название',
+        max_length=254, blank=True)
+    pic = ImageField(
+        'изображение',
+        upload_to='gallery')
+    description = models.TextField(
+        'описание',
+        blank=True)
+    author = models.CharField(
+        'автор',
+        max_length=254, blank=True)
+
+    class Meta:
+        verbose_name = 'изображение'
+        verbose_name_plural = 'изображения'
+
+    def __str__(self):
+        return str(self.pk)
+
+
 @receiver(post_save, sender=Tag)
 def update_tag_slug(sender, instance, created, **kwargs):
     """

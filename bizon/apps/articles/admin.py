@@ -24,6 +24,12 @@ class AuthorAdmin(admin.ModelAdmin):
     pass
 
 
+class GalleryAdmin(AdminImageMixin, admin.StackedInline):
+    classes = ['collapse']
+    extra = 1
+    model = articles_models.Photo
+
+
 class BaseArticleAdminForm(ModelForm):
     class Meta:
         widgets = {
@@ -42,6 +48,10 @@ class BaseArticleAdmin(AdminImageMixin, admin.ModelAdmin):
     form = BaseArticleAdminForm
 
     search_fields = ['title']
+
+    inlines = [
+        GalleryAdmin,
+    ]
 
     list_display = [
         'title',

@@ -508,3 +508,14 @@
         display: none;
     }
 }
+
+
+
+
+
+
+@media screen and (max-width: 550px){
+    .fuul-page h1{
+        font: bold 25px Roboto;
+    }
+}

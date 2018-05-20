@@ -1004,3 +1004,62 @@ background-color:#666;
 .marquee a:hover{
     text-decoration: underline;
 }
+
+
+
+.fuul-page{
+    max-width: 900px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+.fuul-page h1{
+    font: bold 40px Roboto;
+    text-align: center;
+    margin: 0;
+    padding: 45px 0 0 0;
+    display: block;
+}
+.full-page-text{
+    max-width: 700px;
+    margin: 25px auto;
+    font: normal 14px/22px Roboto;
+}
+.picture-description{
+    padding: 15px 0;
+}
+.full-page-image img{
+    display: block;
+}
+.full-page-image-title{
+    font: italic normal 12px Roboto;
+    background: #FFFFFF;
+    padding: 10px;
+}
+
+.full-page-date{
+    font: normal 13px/23px Roboto;
+    background: url(../images/time.png) 0 3px no-repeat;
+    padding: 5px 0 5px 25px;
+    margin: 0 20px 10px 0;
+    display: inline;
+}
+.full-page-views{
+    font: normal 13px/23px Roboto;
+    background: url(../images/eye.png) 0 3px no-repeat;
+    padding: 5px 0 5px 25px;
+    margin: 0 0 10px 0;
+    display: inline;
+}
+.full-page-category{
+    font: normal 13px/23px Roboto;
+    padding: 5px 0;
+    margin: 0 20px 10px 0;
+    display: inline;
+}
+.full-page-category a{
+    color: #333;
+}
+.full-page-head{
+    text-align: center;
+    margin: 10px 0 0 0;
+}
