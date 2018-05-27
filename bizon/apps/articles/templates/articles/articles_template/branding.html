@@ -27,6 +27,15 @@
             <h1>{{ article.title }}</h1>
         </div>
         <div class="full-article-body">
+            <div class="article-pathway">
+                <a href="/">Главная</a>
+                /
+                {% for ancestor_category in article.category.get_ancestors %}
+                    <a href="{{ ancestor_category.get_absolute_url }}">{{ ancestor_category }}</a>
+                    /
+                {% endfor %}
+                <a href="{{ article.category.get_absolute_url }}">{{ article.category }}</a>
+            </div>
             <div class="article-head clear-block">
                 <div class="article-date">{{ article.created }}</div>
                 <div class="article-views">{{ article.views }}</div>
@@ -41,6 +50,12 @@
                 <img src="{{ im.url }}" width="100%">
             {% endthumbnail %}
             {{ article.text|safe }}
+            <div class="article-footer">
+                Автор:
+                {% for autor in article.authors.all %}
+                    {{ autor.name }} {{ autor.last_name }}
+                {% endfor %}
+            </div>
             <div class="tags clear-block">
                 <ul>
                 {% for tag in article.tags.all %}
