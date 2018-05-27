@@ -28,9 +28,6 @@
                     ]]>
                 </content:encoded>
                 <enclosure url="{% current_host %}{{ article.cover.url }}" type="image/jpeg"/>
-                {% for image in article.text_images %}
-                <enclosure url="{% current_host %}{{ image }}" type="image/jpeg"/>
-                {% endfor %}
             </item>
         {% endfor %}
     </channel>
