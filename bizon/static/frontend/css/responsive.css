@@ -358,6 +358,9 @@
     .footer-content {
         min-height: 200px;
     }
+    .footer-icons{
+        top:150px;
+    }
     .column-container{
         width: 400px;
     }
@@ -386,6 +389,16 @@
         padding: 15px;
         min-height: 200px;
     }
+    .footer-icons{
+        position: static;
+        width: 225px;
+        margin: 0 auto;
+    }
+    .footer-icons div:first-child{
+        width: 100%;
+        text-align: center;
+     
+    }
     .column{
         float: none;
         width: 100%;
@@ -402,12 +415,7 @@
         margin: 0 0 0 0;
     }
 
-
-    
-
-
 }
-
 /*Архив материалов*/
 @media screen and (min-width: 550px) and (max-width: 900px){
     .wrapper{
@@ -508,12 +516,6 @@
         display: none;
     }
 }
-
-
-
-
-
-
 @media screen and (max-width: 550px){
     .fuul-page h1{
         font: bold 25px Roboto;
