@@ -1063,3 +1063,20 @@ background-color:#666;
     text-align: center;
     margin: 10px 0 0 0;
 }
+.footer-icons{
+    position: absolute;
+    top: 280px;
+    right: 25px;
+    
+}
+.footer-icons div{
+    font: bold 14px/35px Roboto;
+    min-width: 35px;
+    height: 35px;
+    float: left;
+    margin: 0 0 0 10px;
+    color: #EEE;
+}
+.footer-icons div a img{
+    width: 35px;
+}
