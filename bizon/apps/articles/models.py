@@ -69,6 +69,9 @@ class Article(PolymorphicModel):
     cover = ImageField(
         'обложка',
         upload_to='cover', blank=True, null=True)
+    cover_desc = models.CharField(
+        'Подпись под обложкой',
+        max_length=254, blank=True)
     background = ImageField(
         'задник',
         upload_to='background', blank=True, null=True)

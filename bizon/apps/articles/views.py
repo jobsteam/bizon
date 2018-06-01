@@ -1,6 +1,7 @@
 from django.db.models import Case, IntegerField, F, Sum, Q, When
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
+from django.utils import timezone
 from django.views.generic import ListView, DetailView
 
 from articles.models import Article, Category
@@ -20,7 +21,8 @@ class IndexView(ListView):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        return qs.select_related('category').filter(is_published=True)
+        return (qs.select_related('category')
+                  .filter(is_published=True, created__lte=timezone.now()))
 
 
 class CategoryView(ListView):
@@ -37,7 +39,7 @@ class CategoryView(ListView):
         """
         self.category = get_object_or_404(Category, **self.kwargs)
         return Article.objects.filter(
-            is_published=True,
+            is_published=True, created__lte=timezone.now(),
             category__in=self.category.get_descendants(include_self=True))
 
     def get_context_data(self, *args, **kwargs):
@@ -74,7 +76,7 @@ class ArticleView(DetailView):
         if not getattr(self, '_object', None):
             self._object = get_object_or_404(
                 Article, slug=self.kwargs['slug'], pk=self.kwargs['pk'],
-                is_published=True)
+                is_published=True, created__lte=timezone.now())
         return self._object
 
     def get_template_names(self):
@@ -137,8 +139,9 @@ class ArticleTagView(ListView):
         """
         qs = super().get_queryset()
         tag_slug = self.kwargs['slug']
-        return qs.select_related('category').filter(tags__slug=tag_slug,
-                                                    is_published=True)
+        return qs.select_related('category').filter(
+            tags__slug=tag_slug, is_published=True,
+            created__lte=timezone.now())
 
     def get_context_data(self, *args, **kwargs):
         """
@@ -166,7 +169,7 @@ class ArticleSearchView(ListView):
         q = self.request.GET.get('q')
         return (qs.select_related('category')
                   .filter(Q(title__icontains=q) | Q(text__icontains=q),
-                          is_published=True))
+                          is_published=True, created__lte=timezone.now()))
 
     def get_context_data(self, *args, **kwargs):
         """
