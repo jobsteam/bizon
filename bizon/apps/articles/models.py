@@ -265,5 +265,8 @@ def update_tag_slug(sender, instance, created, **kwargs):
     Исправляем slug при создании нового тэга.
     """
     if created is True:
-        sender.objects.filter(pk=instance.pk).update(
-            slug=slugify(translit(instance.name, 'ru', reversed=True)))
+        slug = slugify(translit(instance.name, 'ru', reversed=True))
+        while sender.objects.filter(slug=slug).exists():
+            slug += '_'
+
+        sender.objects.filter(pk=instance.pk).update(slug=slug)
