@@ -206,6 +206,9 @@ body{
 }
 .article-bigfoto{
 }
+.article-bigfoto img {
+    display: block;
+}
 .article-pathway{
     margin: 0 0 10px 0;
     font: normal 13px Roboto;
@@ -1079,4 +1082,11 @@ background-color:#666;
 }
 .footer-icons div a img{
     width: 35px;
+}
+.article-foto-desc {
+    background: #EEE;
+    padding: 8px;
+    font: normal 11px Roboto;
+    text-align: right;
+    color: #666;
 }

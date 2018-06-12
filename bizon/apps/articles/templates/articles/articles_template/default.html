@@ -44,6 +44,12 @@
                 <img src="{{ im.url }}" width="100%">
             </div>
         {% endthumbnail %}
+
+
+        {% if article.cover_desc %}
+            <div class="article-foto-desc">{{ article.cover_desc }}</div>
+        {% endif  %}
+
         <div class="article-text">
             {{ article.text|safe }}
         </div>
