@@ -15,6 +15,8 @@ urlpatterns = [
         url=staticfiles_storage.url('favicon.ico'), permanent=True)),
     path('robots.txt', TemplateView.as_view(
         template_name='robots.txt', content_type='text/plain')),
+    path('sdkfjvvr237rufhklsd.txt', TemplateView.as_view(
+        template_name='sdkfjvvr237rufhklsd.txt', content_type='text/plain')),
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('rss/', include('rss.urls')),
